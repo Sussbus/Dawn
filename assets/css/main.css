@@ -19,6 +19,9 @@ input {
   padding-left: 5px;
   margin-bottom: 20px;
 }
+input::placeholder {
+  font-family: "Andale Mono", AndaleMono, monospace !important;
+}
 input:focus {
   outline:none;
 }
