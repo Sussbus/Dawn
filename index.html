@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Dawn</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+  </head>
+  <body>
+    <div class="title-bar">
+      <!-- close, minimize and expand buttons -->
+      <div style="position: absolute; margin-left: 12px; margin-top: 1px;">
+        <button class="title-bar-close" onclick="javascript:window.close();"></button>
+        <button class="title-bar-minimize" onclick="javascript:minimizeWindow()"></button>
+        <button class="title-bar-expand"></button>
+      </div>
+      <p class="title-bar-text">Dawn</p>
+    </div>
+    <div style="margin-left: 60px; margin-top: 60px;">
+      <h2 style="margin-bottom: 35px;">Add command line</h2>
+      <div style="#">
+        <input placeholder="Your command"/><br />
+        <button class="btn-clear">Clear</button>
+        <button class="btn-save">Save</button>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    const { remote } = require('electron')
+    function minimizeWindow() {
+      remote.BrowserWindow.getFocusedWindow().minimize();
+    }
+    // You can also require other files to run in this process
+    require('./renderer.js')
+  </script>
+</html>

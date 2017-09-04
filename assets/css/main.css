@@ -1,0 +1,105 @@
+body {
+  background-color: #152431;
+  margin: 0px !important;
+  padding: 0px !important;
+  margin-top: 0px !important;
+  padding-top: 0px !important;
+}
+h2 {
+  font-size: 20;
+  color: #98D5E3;
+  font-family: "Andale Mono", AndaleMono, monospace;
+}
+input {
+  background: #152431;
+  width: 300px;
+  height: 35px;
+  border: 2px solid #98D5E3;
+  border-radius: 10px;
+  padding-left: 5px;
+  margin-bottom: 20px;
+}
+input:focus {
+  outline:none;
+}
+.btn-clear {
+  -webkit-border-radius: 11;
+  -moz-border-radius: 11;
+  border-radius: 11px;
+  border: 0px;
+  color: #ffffff;
+  font-family: "Andale Mono", AndaleMono, monospace;
+  font-size: 20px;
+  background: #F1606E;
+  padding: 7px 20px 7px 20px;
+  text-decoration: none;
+}
+.btn-clear:hover {
+  background: #F13F51;
+}
+.btn-save {
+  -webkit-border-radius: 11;
+  -moz-border-radius: 11;
+  border-radius: 11px;
+  border: 0px;
+  color: #ffffff;
+  font-family: "Andale Mono", AndaleMono, monospace;
+  font-size: 20px;
+  background: #88E487;
+  padding: 7px 20px 7px 20px;
+  text-decoration: none;
+}
+.btn-save:hover {
+  background: #67E366;
+}
+button:focus {
+  outline: none;
+}
+.title-bar {
+  padding-top: 7px;
+  height: 27px;
+  width: 100%;
+  background: #D4D6D3;
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
+  text-align: center;
+}
+.title-bar-text {
+  margin: 0px !important;
+  padding: 0px !important;
+  font-family: "Andale Mono", AndaleMono, monospace;
+  color: #1C1C1C;
+  font-size: 18px;
+}
+.title-bar-close {
+  background: #F1606E;
+  border: 0px;
+  border-radius: 12px;
+  min-height: 14px;
+  min-width: 14px;
+  margin-right: 5px;
+}
+.title-bar-close:hover {
+  background: #F12034;
+}
+.title-bar-minimize {
+  background: #59BCE4;
+  border: 0px;
+  border-radius: 12px;
+  min-height: 14px;
+  min-width: 14px;
+  margin-right: 5px;
+}
+.title-bar-minimize:hover {
+  background: #34A7D6;
+}
+.title-bar-expand {
+  background: #A0D36A;
+  border: 0px;
+  border-radius: 12px;
+  min-height: 14px;
+  min-width: 14px;
+}
+.title-bar-expand:hover {
+  background: #6EC710;
+}
