@@ -1,4 +1,6 @@
 const electron = require('electron')
+const ipc = require('electron').ipcMain;
+
 // Module to control application life.
 const app = electron.app
 // Module to create native browser window.
@@ -13,18 +15,24 @@ let mainWindow
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 600, height: 450, frame: false, resizable: false})
+  mainWindow = new BrowserWindow({width: 600, height: 400, frame: false, resizable: false, show: false})
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
+    pathname: path.join(__dirname, 'Darwin.html'),
     protocol: 'file:',
     slashes: true
   }))
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
-
+  ipc.on('show-main-window', function (event) {
+    mainWindow.center()
+    mainWindow.show()
+  })
+  ipc.on('hide-main-window', function (event) {
+    mainWindow.hide()
+  })
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
     // Dereference the window object, usually you would store windows
@@ -33,6 +41,15 @@ function createWindow () {
     mainWindow = null
   })
 }
+
+//Creating menu item
+var menubar = require('menubar')
+
+var mb = menubar()
+
+mb.on('ready', function ready () {
+  console.log('app is ready')
+})
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.

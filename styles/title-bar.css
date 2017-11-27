@@ -1,0 +1,52 @@
+#title-bar {
+    width: 100%;
+    margin: 0px !important;
+    height: 35px;
+    background-color: #DADDDA;
+    -webkit-app-region: drag;
+    -webkit-user-select: none;
+}
+#close-button {
+    float: left;
+    margin-left: 12px;
+    margin-top: 11px;
+    width: 14px;
+    height: 14px;
+    border-radius: 10px;
+    background-color: #F1606E;
+}
+#close-button:hover {
+    background-color: #F12034;
+}
+#minimize-button {
+    float: left;
+    margin-left: 15px;
+    margin-top: 11px;
+    width: 14px;
+    height: 14px;
+    border-radius: 10px;
+    background-color: #59BCE4;
+}
+#minimize-button:hover {
+    background-color: #34A7D6;
+}
+#expand-button {
+    float: left;
+    margin-left: 15px;
+    margin-top: 11px;
+    width: 14px;
+    height: 14px;
+    border-radius: 10px;
+    background-color: #A0D36A;
+}
+#expand-button:hover {
+    background-color: #6EC710;
+}
+#title-bar-text {
+    position: absolute;
+    margin-left: 260px;
+    margin-top: 5px;
+    font-family: "Andale Mono", AndaleMono, monospace;
+    color: #1C1C1C;
+    font-size: 20px;
+}

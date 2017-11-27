@@ -1,0 +1,220 @@
+body {
+    background-color: #11273B;
+    margin: 0px !important;
+}
+h2 {
+    color: #98D5E3;
+    font-family: "Andale Mono", AndaleMono, monospace;
+}
+#log {
+    color: white;
+    font-family: "Andale Mono", AndaleMono, monospace;
+    position: absolute;
+    margin-top: 70px;
+    margin-left: 22px;
+}
+#command-header {
+    font-size: 30px;
+    margin-left: 25px;
+    margin-top: 55px;
+}
+#button-container {
+    margin-top: 30px;
+    margin-left: 20px;
+    -webkit-user-select: none;
+}
+#clear-button {
+    float: left;
+    height: 45px;
+    width: 95px;
+    background-color: #FF6C6F;
+    border-radius: 12px;
+}
+#clear-button:hover {
+    background-color: #F13F51;
+}
+#clear-text {
+    font-family: "Andale Mono", AndaleMono, monospace;
+    color: white;
+    padding: 0px !important;
+    margin-left: 17px;
+    margin-top: 12px;
+    font-size: 20px;
+}
+#save-button {
+    float: left;
+    height: 45px;
+    width: 95px;
+    margin-left: 20px;
+    background-color: #68E593;
+    border-radius: 12px;
+}
+#save-button:hover {
+    background-color: #67E366;
+}
+#save-text {
+    font-family: "Andale Mono", AndaleMono, monospace;
+    color: white;
+    padding: 0px !important;
+    margin-left: 23px;
+    margin-top: 12px;
+    font-size: 20px;
+}
+#add-command {
+  border: none;
+  background-color: #91D8EB;
+  border-radius: 20px;
+  padding-left: 10.5px;
+  padding-right: 10.5px;
+  padding-top: 0px;
+  padding-bottom: 4.5px;
+  font-size: 30px;
+  font-weight: 200;
+  position: fixed;
+  outline: 0;
+  margin-left: 352px;
+  margin-top: 353px;
+  color: #36454f;
+}
+#add-command:hover {
+  box-shadow: 1.5px 3px gray;
+}
+#command-list-item {
+  padding-top: 8px;
+  padding-left: 10px;
+  padding-bottom: 6px;
+  width: 100%;
+  background-color: #e5e5e5;
+  margin: 0px !important;
+}
+#command-list-item:hover {
+  background-color: #d3d3d3;
+}
+#command-name {
+  color: #1b2328;
+  margin: 0px !important;
+  font-size: 20px;
+}
+#command-items {
+  padding-top: 3px;
+  margin: 0px !important;
+  font-size: 14px;
+  color: gray;
+}
+.textarea {
+    width: 90%;
+    height: 50px;
+    margin-top: 30px;
+    margin-left: 3%;
+    border: 2px solid #91D8EB;
+    background-color: #1D4466;
+    border-radius: 10px;
+  }
+  
+  .taggle_list {
+    float: left;
+    padding: 8px;
+    margin: 0;
+    width: 100%;
+  }
+  
+  .taggle_input {
+    border: none;
+    outline: none;
+    font-size: 17px;
+    font-weight: 300;
+    color: white;
+  }
+  
+  .taggle_list li {
+    float: left;
+    display: inline-block;
+    white-space: nowrap;
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+  
+  .taggle_list .taggle {
+    font-size: 16px;
+    font-family: Avenir;
+    margin-right: 8px;
+    background: #E2E1DF;
+    padding: 5px 10px;
+    border-radius: 3px;
+    position: relative;
+    cursor: pointer;
+    transition: all .3s;
+    -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+  }
+  
+  .taggle_list .taggle_hot {
+    background: #a5a4a2;
+  }
+  
+  .taggle_list .taggle .close {
+    font-size: 1.35rem;
+    position: absolute;
+    top: 5px;
+    right: 3px;
+    outline: 0;
+    text-decoration: none;
+    padding: 0;
+    line-height: 0.5;
+    color: #ccc;
+    color: rgba(0, 0, 0, 0.2);
+    padding-bottom: 4px;
+    display: none;
+    border: 0;
+    background: none;
+    cursor: pointer;
+  }
+  
+  .taggle_list .taggle:hover {
+    padding: 5px;
+    padding-right: 17px;
+    background: #ccc;
+    transition: all .3s;
+  }
+  
+  .taggle_list .taggle:hover > .close {
+    display: block;
+  }
+  
+  .taggle_list .taggle .close:hover {
+    color: #990033;
+  }
+  
+  .taggle_placeholder {
+    position: absolute;
+    color: #CCC;
+    top: 170px;
+    left: 30px;
+    font-family: Avenir;
+    transition: opacity, .25s;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+  }
+
+  .taggle_input {
+    padding: 8px;
+    padding-left: 0;
+    float: left;
+    margin-top: -2px;
+    background: none;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .taggle_sizer {
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: -500px;
+    z-index: -1;
+    visibility: hidden;
+  }

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dawn</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <link rel="stylesheet" type="text/css" href="styles/title-bar.css">
+    <script>require('./main.js')</script>
+    <script src="js/actions.js"></script>
+
+    <!-- Taggle.js Dependency -->
+    <script src="js/taggle.js"></script>
+    
+    <!-- Vex-JS Dependencies-->
+    <script src="node_modules/vex-js/dist/js/vex.combined.min.js"></script>
+    <link rel="stylesheet" href="node_modules/vex-js/dist/css/vex.css">
+    <link rel="stylesheet" href="node_modules/vex-js/dist/css/vex-theme-default.css" />
+    <link rel="stylesheet" href="node_modules/vex-js/dist/css/vex-theme-top.css" />
+    
+  </head>
+  <body>
+    <div id="title-bar">
+      <div id="close-button" onclick="javascript:hideMainWindow()"></div>
+      <div id="minimize-button" onclick="javascript:remote.BrowserWindow.getFocusedWindow().minimize()"></div>
+      <div id="expand-button"></div>
+      <p id="title-bar-text">Dawn</p>
+    </div>
+    <h2 id="command-header">Add command line</h2>
+    <div id="commands_input" class="input textarea"></div>
+    <div id="button-container">
+        <div id="clear-button" onclick="javascript:taggle_input.removeAll(); document.getElementById('log').innerHTML = '';">
+          <p id="clear-text">clear</p>
+        </div>
+        <div id="save-button" onclick="javascript:saveCommand()">
+          <p id="save-text">save</p>
+        </div>
+    </div>
+    <!-- For debugging input -->
+    <p id="log"></p>
+
+    <script>
+      // Electron Requirements
+      require('./renderer.js')
+      const { remote } = require('electron')
+      const ipc = require('electron').ipcRenderer;
+
+      //Taggle input initialization
+      var log = document.getElementById('log');
+      var taggle_input = new Taggle('commands_input', {
+          preserveCase: true,
+          onTagAdd: function(e, tag) {
+              log.textContent = 'You just added "' + tag + '"'; 
+          }
+      });
+      function hideMainWindow() {
+        ipc.send('hide-main-window')
+      }
+
+    </script>
+  </body>
+</html>

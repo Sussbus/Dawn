@@ -20,9 +20,9 @@ To clone and run this repository you'll need [Git](https://git-scm.com) and [Nod
 
 ```bash
 # Clone this repository
-git clone https://github.com/Sussbus/Dawn.git
+git clone https://github.com/electron/electron-quick-start
 # Go into the repository
-cd Dawn
+cd electron-quick-start
 # Install dependencies
 npm install
 # Run the app

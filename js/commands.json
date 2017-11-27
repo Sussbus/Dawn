@@ -1,0 +1,22 @@
+{
+    "commands": [
+        {
+            "name": "Open jbumapp",
+            "items": [
+                "cd Dev",
+                "cd JBUM",
+                "cd jbumapp",
+                "react-native run-ios"
+            ]
+        },
+        {
+            "name": "Open jbummeteor",
+            "items": [
+                "cd Dev",
+                "cd JBUM",
+                "cd jbummeteor",
+                "meteor"
+            ]
+        }
+    ]
+}

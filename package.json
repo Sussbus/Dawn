@@ -1,12 +1,12 @@
 {
-  "name": "electron-quick-start",
+  "name": "Dawn",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "description": "A simple way of making commands",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "https://github.com/Sussbus/Dawn",
   "keywords": [
     "Electron",
     "quick",
@@ -17,7 +17,10 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "~1.6.2"
+    "electron": "~1.7.8"
   },
-  "dependencies": {}
+  "dependencies": {
+    "menubar": "^5.2.3",
+    "vex-js": "^4.0.1"
+  }
 }
