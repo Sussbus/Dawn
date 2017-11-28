@@ -30,6 +30,8 @@ function saveCommand() {
           var name = String(value);
           //Adds command to commands.json
           addCommand(name, items);
+          //Write's shell file for commands
+          writeShellFile(items);
           //Clears inputs
           taggle_input.removeAll();
           //For debugging purposes (cleared also)
@@ -44,3 +46,31 @@ function saveCommand() {
         }
     })
   }
+
+  function writeShellFile(items) {
+    var fs = require('fs')
+    //Generates random file name (for now)
+    let filename = Math.random().toString(36).substring(7);
+    //Items taken from taggle
+    let shell_items = items.join(' && ');
+    //Contents of shell file created into ./shell folder
+    let content = "#!/bin/bash" +
+                  "\nclear" +
+                  "\necho 'Executing Dawn Command...'" +
+                  "\necho -ne '#####                     (33%)\\r'" +
+                  "\nsleep 1" +
+                  "\necho -ne '#############             (66%)\\r'" +
+                  "\nsleep 1" +
+                  "\necho -ne '#######################   (100%)\\r'" +
+                  "\necho -ne '\\n'" +
+                  "\ncd ~ && " + shell_items + "" +
+                  "\nexec bash";
+    fs.writeFile(__dirname + '/shell/' + filename + '.sh', content, (err) => {
+        if (err) throw err;
+        console.log('The file has been saved!');
+    });
+    fs.chmod(__dirname + "/shell/" + filename + ".sh", 0755, (err) => {
+        if (err) throw err;
+        console.log('File permissions updated');
+    });
+}
