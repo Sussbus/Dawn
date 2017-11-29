@@ -74,3 +74,7 @@ function saveCommand() {
         console.log('File permissions updated');
     });
 }
+//Completely not ready to use --needs work
+function openCommand() {
+    require('child_process').spawn('sh', [__dirname + '/shell/work.sh'], {stdio: 'inherit'});
+}
