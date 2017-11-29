@@ -4,7 +4,7 @@ const isValidInput = (input) =>  input.length > 0;
 
 function addCommand(name, items) {
     if (!fs.existsSync(__dirname + '/js/commands.json')) {
-        fs.writeFile(__dirname + '/js/commands.json', JSON.stringify([], null, 4), 'utf-8', function(err) {
+        fs.writeFile(__dirname + '/js/commands.json', '', 'utf-8', function(err) {
             if (err) throw err
             console.log('file addded!')
         }); 
@@ -12,7 +12,8 @@ function addCommand(name, items) {
     //Reads commands.json file
     fs.readFile(__dirname + '/js/commands.json', 'utf-8', function(err, data) {
         if (err) throw err
-        var arrayOfObjects = JSON.parse(data)
+        var arrayOfObjects = data ? JSON.parse(data) : {commands:[]}
+
 
         arrayOfObjects.commands.push({
             name: name,
@@ -94,4 +95,26 @@ function saveCommand() {
 //Completely not ready to use --needs work
 function openCommand() {
     require('child_process').spawn('sh', [__dirname + '/shell/work.sh'], {stdio: 'inherit'});
+}
+
+
+
+deleteCommand = (name) => {
+    if (confirm('Do you want to delete this command?')){
+        //Reads commands.json file
+        fs.readFile(__dirname + '/js/commands.json', 'utf-8', function(err, data) {
+            if (err) throw err
+            var arrayOfObjects = data ? JSON.parse(data) : {commands:[]}
+
+            arrayOfObjects.commands = arrayOfObjects.commands.filter(cmd => cmd.name !== name);
+            console.log(arrayOfObjects.commands)
+
+            //console.log(arrayOfObjects) <-- for debugging
+            //Writing new JSON object into commands.json file
+            fs.writeFile(__dirname + '/js/commands.json', JSON.stringify(arrayOfObjects, null, 4), 'utf-8', function(err) {
+                if (err) throw err
+                console.log('Command added!')
+            }); 
+        });
+    }
 }
