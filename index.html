@@ -15,22 +15,50 @@
         <button id="add-command" onclick="showMainWindow()">+</button>
 
         <script>
-        const ipc = require('electron').ipcRenderer;
-
-        function showMainWindow() {
-            ipc.send('show-main-window');
-        }
-        $.getJSON("./js/commands.json", function(data) {
-            var RENDER_TARGET = document.getElementById('render-target');
-            for(i = 0; i < data.commands.length; i++) {
-                RENDER_TARGET.innerHTML += ''+ 
-                '<div id="command-list-item">' +
-                    '<p id="command-name">' + data.commands[i].name + '</p>' +
-                    '<p id="command-items">' + data.commands[i].items.join(' && ') + '</p>' + 
-                '</div>';
+            const ipc = require('electron').ipcRenderer;
+            const { exec } = require('child_process');
+            let RENDER_TARGET = document.getElementById('render-target');
+            
+            function promisify(func) {
+                return function promiseFunc(options) {
+                    return new Promise(function executor(resolve, reject) {
+                        func(options, function cb(err, val) {
+                            if (err) {
+                                return reject(err);
+                            } else {
+                                return resolve(val);
+                            }
+                        });
+                    });
+                }
             }
-        });
-        
+            
+
+            showMainWindow = () => {
+                ipc.send('show-main-window');
+            }
+
+            handleOnCommandClick = (command) => {
+                exec(command, (err, stdout, stderr) => {
+                    if (err) {
+                        console.log(err)
+                        return;
+                    }
+                    console.log(`stdout: ${stdout}`);
+                    console.log(`stderr: ${stderr}`);
+                });
+
+            }
+
+            $.getJSON("./js/commands.json", (data) => {
+                data.commands.map((command) => {
+                    RENDER_TARGET.innerHTML += ''+ 
+                    `<div id="command-list-item" onClick="handleOnCommandClick(\'${command.items.join(' && ')}\')">` +
+                        `<p id="command-name"> ${command.name} </p>` +
+                        `<p id="command-items"> ${command.items.join(' && ')} </p>` + 
+                    '</div>';
+                })
+            }).error((err) => console.log(err));
         </script>
     </body>
 </html>

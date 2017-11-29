@@ -47,10 +47,11 @@
       //Taggle input initialization
       var log = document.getElementById('log');
       var taggle_input = new Taggle('commands_input', {
-          preserveCase: true,
-          onTagAdd: function(e, tag) {
-              log.textContent = 'You just added "' + tag + '"'; 
-          }
+        saveOnBlur:true,
+        preserveCase: true,
+        onTagAdd: function(e, tag) {
+            log.textContent = 'You just added "' + tag + '"'; 
+        }
       });
       function hideMainWindow() {
         ipc.send('hide-main-window')
