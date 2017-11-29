@@ -25,6 +25,7 @@
             }
 
             handleOnCommandClick = (command) => {
+                command = decodeURI(command)
                 exec(command, (err, stdout, stderr) => {
                     if (err) {
                         console.log(err)
@@ -35,16 +36,16 @@
                 });
             }
 
-            handleRightClick = (name) => {
-                if (confirm(`Delete ${name}?`)){
-
-                }
-            }
+            String.prototype.addSlashes = function() {
+            //no need to do (str+'') anymore because 'this' can only be a string
+                return this.replace(/[\\"']/g, '\\$&').replace(/\u0000/g, '\\0');
+            } 
 
             $.getJSON("./js/commands.json", (data) => {
                 data.commands.map((command) => {
+                    console.log(encodeURI(command.items.join(' ; ')).addSlashes())
                     RENDER_TARGET.innerHTML += ''+ 
-                    `<div id="command-list-item" oncontextmenu="javascript:deleteCommand(\'${command.name}\')" onClick="handleOnCommandClick(\'${command.items.join(' ; ')}\')">` +
+                    `<div id="command-list-item" oncontextmenu="javascript:deleteCommand(\'${command.name}\')" onClick="handleOnCommandClick(\'${encodeURI(command.items.join(' ; ')).addSlashes()}\')">` +
                         `<p id="command-name"> ${command.name} </p>` +
                         `<p id="command-items"> ${command.items.join(' ; ')} </p>` + 
                     '</div>';
