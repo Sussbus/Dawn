@@ -44,9 +44,9 @@
             $.getJSON("./js/commands.json", (data) => {
                 data.commands.map((command) => {
                     RENDER_TARGET.innerHTML += ''+ 
-                    `<div id="command-list-item" oncontextmenu="javascript:deleteCommand(\'${command.name}\')" onClick="handleOnCommandClick(\'${command.items.join(' && ')}\')">` +
+                    `<div id="command-list-item" oncontextmenu="javascript:deleteCommand(\'${command.name}\')" onClick="handleOnCommandClick(\'${command.items.join(' ; ')}\')">` +
                         `<p id="command-name"> ${command.name} </p>` +
-                        `<p id="command-items"> ${command.items.join(' && ')} </p>` + 
+                        `<p id="command-items"> ${command.items.join(' ; ')} </p>` + 
                     '</div>';
                 })
             }).error((err) => console.log(err));
