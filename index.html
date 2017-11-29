@@ -7,6 +7,10 @@
     body {
         font-family: "Arial", Times, serif;
         background-color: white !important;
+        -webkit-user-select: none; /* Safari */        
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* IE10+/Edge */
+        user-select: none; /* Standard */
     }
     </style>
     </head>
@@ -24,13 +28,13 @@
             var RENDER_TARGET = document.getElementById('render-target');
             for(i = 0; i < data.commands.length; i++) {
                 RENDER_TARGET.innerHTML += ''+ 
-                '<div id="command-list-item">' +
+                '<a onclick="#"><div id="command-list-item">' +
                     '<p id="command-name">' + data.commands[i].name + '</p>' +
                     '<p id="command-items">' + data.commands[i].items.join(' && ') + '</p>' + 
-                '</div>';
+                '</div></a>';
             }
         });
-        
+
         </script>
     </body>
 </html>
