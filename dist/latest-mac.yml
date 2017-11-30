@@ -1,10 +1,10 @@
 version: 1.0.0
 files:
   - url: Dawn-1.0.0-mac.zip
-    sha512: bNhcxKtB1hvojWG9ZFgAL6TxCBh6mqkUlDM5pFoE9X4vZKdQK5fRfz3uj5t98Vf1HZKw7qZc0RHojKK7/6vG0Q==
+    sha512: OJa9jN6cqdPy2G0AV6b/xBAmmF9VhiNhJYsIXD37MH/dBCgeneiz5fRdP0OeQNOqpB/NVW+EarrZ9GK9XmsxUg==
   - url: Dawn-1.0.0.dmg
-    sha512: mv6z7YHsAB6/S8tNjhsM1n6qu1XcosF7Sf11VVxaG8vGdb9c25H0tQH9XBHqk/ntJYDgALKwQdCGuo3fmP/Ddg==
-    size: 50548503
+    sha512: QVrmD8aToOdQBUy13UEftoVSWc8MNmLMm2OsARl8MuSbW7LbB9AHOuKOe+imADF524bawq2kyQKmJ9hGnr+0sQ==
+    size: 51998922
 path: Dawn-1.0.0-mac.zip
-sha512: bNhcxKtB1hvojWG9ZFgAL6TxCBh6mqkUlDM5pFoE9X4vZKdQK5fRfz3uj5t98Vf1HZKw7qZc0RHojKK7/6vG0Q==
-releaseDate: '2017-11-30T05:24:34.269Z'
+sha512: OJa9jN6cqdPy2G0AV6b/xBAmmF9VhiNhJYsIXD37MH/dBCgeneiz5fRdP0OeQNOqpB/NVW+EarrZ9GK9XmsxUg==
+releaseDate: '2017-11-30T05:32:52.030Z'
