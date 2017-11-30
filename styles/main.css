@@ -85,7 +85,6 @@ h2 {
   padding-left: 10px;
   padding-bottom: 3px;
   width: 390px;
-  overflow: hidden;
   height: 50px !important;
   background-color: #e5e5e5;
   margin: 0px !important;
@@ -97,6 +96,15 @@ h2 {
   color: #1b2328;
   margin: 0px !important;
   font-size: 20px;
+}
+#command-items-container {
+  overflow-x:auto;
+  white-space:nowrap;
+  width: 100%;
+}
+/* Disables scrollbar from showing up */
+::-webkit-scrollbar { 
+  display: block; 
 }
 #command-items {
   padding-top: 3px;

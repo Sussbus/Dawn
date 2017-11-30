@@ -47,7 +47,7 @@
                     RENDER_TARGET.innerHTML += ''+ 
                     `<div id="command-list-item" oncontextmenu="javascript:deleteCommand(\'${command.name}\')" onClick="handleOnCommandClick(\'${encodeURI(command.items.join(' ; ')).addSlashes()}\')">` +
                         `<p id="command-name"> ${command.name} </p>` +
-                        `<p id="command-items"> ${command.items.join(' ; ')} </p>` + 
+                        `<div id="command-items-container"><p id="command-items"> ${command.items.join(' ; ')} </p></div>` + 
                     '</div>';
                 })
             }).error((err) => console.log(err));
