@@ -1,5 +1,5 @@
 # Dawn
-< Currently in pre-alpha
+> Currently in pre-alpha
 
 ## To Use
 
