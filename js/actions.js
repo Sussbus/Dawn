@@ -47,8 +47,7 @@ function saveCommand() {
 
             //Adds command to commands.json
             addCommand(name, items);
-            //Write's shell file for commands
-            writeShellFile(items);
+
             //Clears inputs
             taggle_input.removeAll();
             //For debugging purposes (cleared also)
