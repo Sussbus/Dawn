@@ -52,7 +52,7 @@ mb.on('ready', function ready () {
 })
 
 mb.on('show', function show () {
-  alert('4tibiu')
+  //alert('4tibiu')
   console.log('showing app')
 })
 
