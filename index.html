@@ -8,6 +8,10 @@
     body {
         font-family: "Arial", Times, serif;
         background-color: white !important;
+        -webkit-user-select: none; /* Safari */        
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* IE10+/Edge */
+        user-select: none; /* Standard */
     }
     </style>
     </head>
@@ -51,6 +55,7 @@
                     '</div>';
                 })
             }).error((err) => console.log(err));
+
         </script>
     </body>
 </html>
