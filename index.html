@@ -1,7 +1,8 @@
 <html>
     <head>
     <script>require('./main.js')</script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>  
+    <script src="js/actions.js"></script>  
     <link rel="stylesheet" type="text/css" href="styles/main.css">
     <style>
     body {
@@ -19,21 +20,41 @@
         <button id="add-command" onclick="showMainWindow()">+</button>
 
         <script>
-        const ipc = require('electron').ipcRenderer;
+            const ipc = require('electron').ipcRenderer;
+            const { exec } = require('child_process');
+            let RENDER_TARGET = document.getElementById('render-target');     
 
-        function showMainWindow() {
-            ipc.send('show-main-window');
-        }
-        $.getJSON("./js/commands.json", function(data) {
-            var RENDER_TARGET = document.getElementById('render-target');
-            for(i = 0; i < data.commands.length; i++) {
-                RENDER_TARGET.innerHTML += ''+ 
-                '<a onclick="#"><div id="command-list-item">' +
-                    '<p id="command-name">' + data.commands[i].name + '</p>' +
-                    '<p id="command-items">' + data.commands[i].items.join(' && ') + '</p>' + 
-                '</div></a>';
+            showMainWindow = () => {
+                ipc.send('show-main-window');
             }
-        });
+
+            handleOnCommandClick = (command) => {
+                command = decodeURI(command)
+                exec(command, (err, stdout, stderr) => {
+                    if (err) {
+                        console.log(err)
+                        return;
+                    }
+                    console.log(`stdout: ${stdout}`);
+                    console.log(`stderr: ${stderr}`);
+                });
+            }
+
+            String.prototype.addSlashes = function() {
+            //no need to do (str+'') anymore because 'this' can only be a string
+                return this.replace(/[\\"']/g, '\\$&').replace(/\u0000/g, '\\0');
+            } 
+
+            $.getJSON("./js/commands.json", (data) => {
+                data.commands.map((command) => {
+                    console.log(encodeURI(command.items.join(' ; ')).addSlashes())
+                    RENDER_TARGET.innerHTML += ''+ 
+                    `<div id="command-list-item" oncontextmenu="javascript:deleteCommand(\'${command.name}\')" onClick="handleOnCommandClick(\'${encodeURI(command.items.join(' ; ')).addSlashes()}\')">` +
+                        `<p id="command-name"> ${command.name} </p>` +
+                        `<div id="command-items-container"><p id="command-items"> ${command.items.join(' ; ')} </p></div>` + 
+                    '</div>';
+                })
+            }).error((err) => console.log(err));
 
         </script>
     </body>
