@@ -1,5 +1,4 @@
 var fs = require('fs')
-
 const isValidInput = (input) =>  input.length > 0;
 
 function addCommand(name, items) {
@@ -14,16 +13,24 @@ function addCommand(name, items) {
         if (err) throw err
         var arrayOfObjects = data ? JSON.parse(data) : {commands:[]}
 
-
         arrayOfObjects.commands.push({
             name: name,
             items: items
         });
-        //console.log(arrayOfObjects) <-- for debugging
         //Writing new JSON object into commands.json file
         fs.writeFile(__dirname + '/js/commands.json', JSON.stringify(arrayOfObjects, null, 4), 'utf-8', function(err) {
-            if (err) throw err
+            if (err) throw err            
+            const electron = require('electron').remote;
+            const BrowserWindow = electron.BrowserWindow;
+
             console.log('Command added!')
+            
+            const allWindows = BrowserWindow.getAllWindows()
+
+            allWindows.forEach((bw) => {
+                if (bw === BrowserWindow.getFocusedWindow()) return;
+                bw.webContents.reloadIgnoringCache()
+              })
         }); 
     });
 }
@@ -37,6 +44,7 @@ function saveCommand() {
         className: 'vex-theme-default',
         callback:  (value) => {
             if (!value) return 
+            const isValidInput = (input) =>  input.length > 0;            
             var items = taggle_input.getTags().values;
             var name = String(value);
 
@@ -58,45 +66,10 @@ function saveCommand() {
             vex.dialog.alert({
             message: 'Command saved',
             className: 'vex-theme-top',
-            })
-
+            });
         }
-    })
-  }
-
-  function writeShellFile(items) {
-    var fs = require('fs')
-    //Generates random file name (for now)
-    let filename = Math.random().toString(36).substring(7);
-    //Items taken from taggle
-    let shell_items = items.join(' && ');
-    //Contents of shell file created into ./shell folder
-    let content = "#!/bin/bash" +
-                  "\nclear" +
-                  "\necho 'Executing Dawn Command...'" +
-                  "\necho -ne '#####                     (33%)\\r'" +
-                  "\nsleep 1" +
-                  "\necho -ne '#############             (66%)\\r'" +
-                  "\nsleep 1" +
-                  "\necho -ne '#######################   (100%)\\r'" +
-                  "\necho -ne '\\n'" +
-                  "\ncd ~ && " + shell_items + "" +
-                  "\nexec bash";
-    fs.writeFile(__dirname + '/shell/' + filename + '.sh', content, (err) => {
-        if (err) throw err;
-        console.log('The file has been saved!');
-    });
-    fs.chmod(__dirname + "/shell/" + filename + ".sh", 0755, (err) => {
-        if (err) throw err;
-        console.log('File permissions updated');
     });
 }
-//Completely not ready to use --needs work
-function openCommand() {
-    require('child_process').spawn('sh', [__dirname + '/shell/work.sh'], {stdio: 'inherit'});
-}
-
-
 
 deleteCommand = (name) => {
     if (confirm('Do you want to delete this command?')){
@@ -106,13 +79,21 @@ deleteCommand = (name) => {
             var arrayOfObjects = data ? JSON.parse(data) : {commands:[]}
 
             arrayOfObjects.commands = arrayOfObjects.commands.filter(cmd => cmd.name !== name);
-            console.log(arrayOfObjects.commands)
 
-            //console.log(arrayOfObjects) <-- for debugging
             //Writing new JSON object into commands.json file
             fs.writeFile(__dirname + '/js/commands.json', JSON.stringify(arrayOfObjects, null, 4), 'utf-8', function(err) {
                 if (err) throw err
-                console.log('Command added!')
+                const electron = require('electron').remote;
+                const BrowserWindow = electron.BrowserWindow;
+
+                console.log('Command deleted!')
+                                
+                const allWindows = BrowserWindow.getAllWindows()
+    
+                allWindows.forEach((bw) => {
+                    if (bw === BrowserWindow.getFocusedWindow()) 
+                        bw.webContents.reloadIgnoringCache();
+                  });
             }); 
         });
     }

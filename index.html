@@ -47,7 +47,7 @@
 
             $.getJSON("./js/commands.json", (data) => {
                 data.commands.map((command) => {
-                    console.log(encodeURI(command.items.join(' ; ')).addSlashes())
+                    //console.log(encodeURI(command.items.join(' ; ')).addSlashes())
                     RENDER_TARGET.innerHTML += ''+ 
                     `<div id="command-list-item" oncontextmenu="javascript:deleteCommand(\'${command.name}\')" onClick="handleOnCommandClick(\'${encodeURI(command.items.join(' ; ')).addSlashes()}\')">` +
                         `<p id="command-name"> ${command.name} </p>` +

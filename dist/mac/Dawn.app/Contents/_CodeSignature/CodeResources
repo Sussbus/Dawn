@@ -14,7 +14,7 @@
 		</data>
 		<key>Resources/app.asar</key>
 		<data>
-		mhpHsKxo2JQqkToytgb24CtcG4M=
+		J+gfdrsTypWNIEWg0JhYMZM16XM=
 		</data>
 		<key>Resources/electron.asar</key>
 		<data>
@@ -54,7 +54,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			r+kOoDg19us+6BdGRRZ3CtTZcb4=
+			n5Y0bPLHUJv6hGGEZsd7wdEtHF0=
 			</data>
 			<key>requirement</key>
 			<string>identifier "com.github.electron.framework" and anchor apple generic and certificate leaf[subject.CN] = "Mac Developer: Connor Larkin (93ZLF9MMNE)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
@@ -81,7 +81,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			zRyjluQTyTjIlj5oyIScII9inmM=
+			r4F+RA+Y9/ENKRpmqYKUeeKqRAE=
 			</data>
 			<key>requirement</key>
 			<string>identifier "com.github.Squirrel" and anchor apple generic and certificate leaf[subject.CN] = "Mac Developer: Connor Larkin (93ZLF9MMNE)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
@@ -112,11 +112,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			mhpHsKxo2JQqkToytgb24CtcG4M=
+			J+gfdrsTypWNIEWg0JhYMZM16XM=
 			</data>
 			<key>hash2</key>
 			<data>
-			4wZOhRqhMMqB/ZNpyLNw4Rf8xV6s4I5isd76nLV8hkU=
+			aDNJovEsRCt5US5WWOosz1vyJeVhRsHg5Q+yirIBa90=
 			</data>
 		</dict>
 		<key>Resources/electron.asar</key>

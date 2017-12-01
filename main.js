@@ -45,7 +45,7 @@ function createWindow () {
 //Creating menu item
 var menubar = require('menubar')
 
-var mb = menubar({icon: './assets/DawnIcon.png'})
+var mb = menubar({icon: path.join(__dirname, './assets/DawnIcon.png')})
 
 mb.on('ready', function ready () {
   console.log('app is ready')
@@ -53,7 +53,7 @@ mb.on('ready', function ready () {
 
 mb.on('show', function show () {
   //alert('4tibiu')
-  console.log('showing app')
+  //console.log('showing app',browserWindows)
 })
 
 // This method will be called when Electron has finished
