@@ -20,6 +20,7 @@
         <button id="add-command" onclick="showMainWindow()">+</button>
 
         <script>
+            const path = require('path');
             const ipc = require('electron').ipcRenderer;
             const { exec } = require('child_process');
             let RENDER_TARGET = document.getElementById('render-target');     
@@ -45,7 +46,7 @@
                 return this.replace(/[\\"']/g, '\\$&').replace(/\u0000/g, '\\0');
             } 
 
-            $.getJSON("./js/commands.json", (data) => {
+            $.getJSON(path.join(__dirname, './js/commands.json'), (data) => {
                 data.commands.map((command) => {
                     //console.log(encodeURI(command.items.join(' ; ')).addSlashes())
                     RENDER_TARGET.innerHTML += ''+ 

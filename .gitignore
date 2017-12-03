@@ -9,5 +9,6 @@ npm-debug.log
 yarn-error.log
 
 #extras
-/js/commands.json
+js/commands.json
 
+dist/
