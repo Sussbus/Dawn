@@ -1,15 +1,20 @@
-var fs = require('fs')
+var fs = require('fs');
+const electron = require('electron').remote;
+const path = require('path');
+const app = electron.app;
+
 const isValidInput = (input) =>  input.length > 0;
+const commandsPath = path.join(app.getPath('userData'),'commands.json');
 
 function addCommand(name, items) {
-    if (!fs.existsSync(__dirname + '/js/commands.json')) {
-        fs.writeFile(__dirname + '/js/commands.json', '', 'utf-8', function(err) {
+    if (!fs.existsSync(commandsPath)) {
+        fs.writeFile(commandsPath, '', 'utf-8', function(err) {
             if (err) throw err
             console.log('file addded!')
         }); 
     }
     //Reads commands.json file
-    fs.readFile(__dirname + '/js/commands.json', 'utf-8', function(err, data) {
+    fs.readFile(commandsPath, 'utf-8', function(err, data) {
         if (err) throw err
         var arrayOfObjects = data ? JSON.parse(data) : {commands:[]}
 
@@ -18,7 +23,7 @@ function addCommand(name, items) {
             items: items
         });
         //Writing new JSON object into commands.json file
-        fs.writeFile(__dirname + '/js/commands.json', JSON.stringify(arrayOfObjects, null, 4), 'utf-8', function(err) {
+        fs.writeFile(commandsPath, JSON.stringify(arrayOfObjects, null, 4), 'utf-8', function(err) {
             if (err) throw err            
             const electron = require('electron').remote;
             const BrowserWindow = electron.BrowserWindow;
@@ -29,7 +34,8 @@ function addCommand(name, items) {
 
             allWindows.forEach((bw) => {
                 if (bw === BrowserWindow.getFocusedWindow()) return;
-                bw.webContents.reloadIgnoringCache()
+                bw.webContents.reloadIgnoringCache();
+                bw.toggleDevTools();
               })
         }); 
     });
@@ -74,16 +80,15 @@ function saveCommand() {
 deleteCommand = (name) => {
     if (confirm('Do you want to delete this command?')){
         //Reads commands.json file
-        fs.readFile(__dirname + '/js/commands.json', 'utf-8', function(err, data) {
+        fs.readFile(commandsPath, 'utf-8', function(err, data) {
             if (err) throw err
             var arrayOfObjects = data ? JSON.parse(data) : {commands:[]}
 
             arrayOfObjects.commands = arrayOfObjects.commands.filter(cmd => cmd.name !== name);
 
             //Writing new JSON object into commands.json file
-            fs.writeFile(__dirname + '/js/commands.json', JSON.stringify(arrayOfObjects, null, 4), 'utf-8', function(err) {
+            fs.writeFile(commandsPath, JSON.stringify(arrayOfObjects, null, 4), 'utf-8', function(err) {
                 if (err) throw err
-                const electron = require('electron').remote;
                 const BrowserWindow = electron.BrowserWindow;
 
                 console.log('Command deleted!')
