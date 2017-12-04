@@ -1,5 +1,5 @@
 # Dawn
-> Currently in pre-alpha
+> Currently in pre-alpha - [Download](https://github.com/Sussbus/Dawn/releases/download/v0.0.1/Dawn-1.0.0.dmg)
 
 ![Dawn screenshot](/screenshot/app-preview.png)
 
