@@ -1,14 +1,14 @@
 <html>
     <head>
     <script>require('./main.js')</script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>  
-    <script src="js/actions.js"></script>  
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+    <script src="js/actions.js"></script>
     <link rel="stylesheet" type="text/css" href="styles/main.css">
     <style>
     body {
         font-family: "Arial", Times, serif;
         background-color: white !important;
-        -webkit-user-select: none; /* Safari */        
+        -webkit-user-select: none; /* Safari */
         -moz-user-select: none; /* Firefox */
         -ms-user-select: none; /* IE10+/Edge */
         user-select: none; /* Standard */
@@ -22,7 +22,7 @@
         <script>
             const ipc = require('electron').ipcRenderer;
             const { exec } = require('child_process');
-            let RENDER_TARGET = document.getElementById('render-target');     
+            let RENDER_TARGET = document.getElementById('render-target');
 
             showMainWindow = () => {
                 ipc.send('show-main-window');
@@ -30,7 +30,7 @@
 
             handleOnCommandClick = (command) => {
                 command = decodeURI(command)
-                exec(command, (err, stdout, stderr) => {
+                exec('cd ~ ; ' + command, (err, stdout, stderr) => {
                     if (err) {
                         console.log(err)
                         return;
@@ -43,15 +43,15 @@
             String.prototype.addSlashes = function() {
             //no need to do (str+'') anymore because 'this' can only be a string
                 return this.replace(/[\\"']/g, '\\$&').replace(/\u0000/g, '\\0');
-            } 
+            }
 
             $.getJSON(commandsPath, (data) => {
                 data.commands.map((command) => {
                     //console.log(encodeURI(command.items.join(' ; ')).addSlashes())
-                    RENDER_TARGET.innerHTML += ''+ 
+                    RENDER_TARGET.innerHTML += ''+
                     `<div id="command-list-item" oncontextmenu="javascript:deleteCommand(\'${command.name}\')" onClick="handleOnCommandClick(\'${encodeURI(command.items.join(' ; ')).addSlashes()}\')">` +
                         `<p id="command-name"> ${command.name} </p>` +
-                        `<div id="command-items-container"><p id="command-items"> ${command.items.join(' ; ')} </p></div>` + 
+                        `<div id="command-items-container"><p id="command-items"> ${command.items.join(' ; ')} </p></div>` +
                     '</div>';
                 })
             }).error((err) => console.log(err));
@@ -59,4 +59,3 @@
         </script>
     </body>
 </html>
-        
