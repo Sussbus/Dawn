@@ -32,7 +32,7 @@
     },
     "win": {
       "target": "NSIS"
-   }
+    }
   },
   "repository": "https://github.com/Sussbus/Dawn",
   "keywords": [
@@ -49,6 +49,7 @@
     "electron-builder": "^19.46.9"
   },
   "dependencies": {
+    "fix-path": "^2.1.0",
     "menubar": "^5.2.3",
     "vex-js": "^4.0.1"
   }

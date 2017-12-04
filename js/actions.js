@@ -35,7 +35,6 @@ function addCommand(name, items) {
             allWindows.forEach((bw) => {
                 if (bw === BrowserWindow.getFocusedWindow()) return;
                 bw.webContents.reloadIgnoringCache();
-                bw.toggleDevTools();
               })
         }); 
     });
