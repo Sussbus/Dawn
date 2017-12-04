@@ -1,6 +1,6 @@
 {
   "name": "Dawn",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A simple way of making commands",
   "main": "main.js",
   "scripts": {
